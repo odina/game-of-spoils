@@ -1,4 +1,4 @@
-var $document, exileTraitorousSpoiler, first_feed_elem_text, getDeathName, incrementBadgeNumber, initialize, initiateSpoilerBlocking, num_feed_elems, searchForAndBlockSpoilers, settings;
+var $document, exileTraitorousSpoiler, first_feed_elem_text, getDeathName, incrementBadgeNumber, initialize, initiateSpoilerBlocking, num_feed_elems, searchForAndBlockSpoilers, settings, unhideBody;
 
 first_feed_elem_text = null;
 
@@ -15,6 +15,10 @@ settings = {
 
 $document = $(document);
 
+unhideBody = function() {
+  return $('body').css('display', 'block');
+};
+
 $document.ready(function() {
   return chrome.runtime.sendMessage({
     userPreferencesRequested: true
@@ -29,8 +33,9 @@ $document.ready(function() {
       });
       settings.spoiler_words_regex = new RegExp(SPOILER_WORDS_LIST.concat(extra_words_to_block).join('|'), 'i');
       if (response.blockingEnabled) {
-        return initialize();
+        initialize();
       }
+      return unhideBody();
     };
   })(this));
 });

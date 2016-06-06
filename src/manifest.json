@@ -40,6 +40,25 @@
         "*://www.tumblr.com/*",
         "*://www.youtube.com/*"
       ],
+      "js": ["scripts/hide.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://feedly.com/*",
+        "*://gizmodo.com/*",
+        "*://news.google.co.in/*",
+        "*://news.google.co.uk/*",
+        "*://news.google.com/*",
+        "*://plus.google.com/*",
+        "*://twitter.com/*",
+        "*://www.avclub.com/*",
+        "*://www.buzzfeed.com/*",
+        "*://www.facebook.com/*",
+        "*://www.reddit.com/*",
+        "*://www.tumblr.com/*",
+        "*://www.youtube.com/*"
+      ],
       "css": ["assets/fonts/lancelot.css", "styles/content.css"],
       "js":  ["scripts/vendor/jquery.min.js", "scripts/constants.js", "scripts/helpers.js", "scripts/content.js"]
     }

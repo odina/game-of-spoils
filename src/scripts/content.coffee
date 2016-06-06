@@ -7,6 +7,9 @@ settings =
   spoiler_words_regex: null
 $document = $(document)
 
+unhideBody = ->
+  $('body').css 'display', 'block'
+
 $document.ready ->
   chrome.runtime.sendMessage { userPreferencesRequested: true }, (response) =>
     settings.show_specific_words  = response.showSpecificWordEnabled
@@ -15,7 +18,10 @@ $document.ready ->
                                    .map((word) -> word.trim().escapeRegex())
                                    .filter((word) -> !!word)
     settings.spoiler_words_regex = new RegExp(SPOILER_WORDS_LIST.concat(extra_words_to_block).join('|'), 'i')
-    initialize() if response.blockingEnabled
+    if response.blockingEnabled
+      initialize()
+
+    unhideBody()
 
 
 incrementBadgeNumber = ->
